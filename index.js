@@ -8,6 +8,7 @@ const startGame = () => {
   const gridSizeInput = document.createElement("input");
   gridSizeInput.setAttribute("id", "grid-size");
   gridSizeInput.setAttribute("type", "number");
+  gridSizeInput.setAttribute("placeholder", "Size of the grid");
   const btn = document.createElement("button");
   btn.innerText = "Create";
 
