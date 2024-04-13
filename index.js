@@ -55,6 +55,12 @@ const sleep = () => {
 const handlePlayerMovement = (ev) => {
   const currPlayer = game.players[game.currentPlayerIdx];
   const [x, y] = currPlayer.getPosition();
+  console.log(
+    "first",
+    Math.max(x - 1, 0),
+    Math.min(y + 1, game.grid[0].length - 1)
+  );
+
   switch (ev.code) {
     case "ArrowUp":
       currPlayer.setPosition([Math.max(x - 1, 0), y]);
@@ -68,8 +74,40 @@ const handlePlayerMovement = (ev) => {
     case "ArrowRight":
       currPlayer.setPosition([x, Math.min(y + 1, game.grid[0].length - 1)]);
       break;
+    case "KeyR":
+      currPlayer.setPosition([Math.max(x - 1, 0), Math.max(y - 1, 0)]);
+      break;
+    case "KeyB":
+      currPlayer.setPosition([
+        Math.min(x + 1, game.grid[0].length - 1),
+        Math.min(y + 1, game.grid[0].length - 1),
+      ]);
+      break;
+    case "KeyC":
+      currPlayer.setPosition([
+        Math.min(x + 1, game.grid[0].length - 1),
+        Math.max(y - 1, 0),
+      ]);
+      break;
+    case "KeyY":
+      currPlayer.setPosition([
+        Math.max(x - 1, 0),
+        Math.min(y + 1, game.grid[0].length - 1),
+      ]);
+      break;
   }
-  if (["ArrowDown", "ArrowLeft", "ArrowRight", "ArrowUp"].includes(ev.code)) {
+  if (
+    [
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "KeyR",
+      "KeyY",
+      "KeyC",
+      "KeyB",
+    ].includes(ev.code)
+  ) {
     document.removeEventListener("keydown", handlePlayerMovement);
 
     game.draw();
