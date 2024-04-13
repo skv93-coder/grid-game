@@ -178,7 +178,8 @@ class Game {
     for (let i = 0; i < this.players.length; i++) {
       const currPlayer = this.players[i];
       const [x, y] = currPlayer.getPosition();
-      if (this.tgtColumn === y && this.tgtRow && this.tgtRow === x) {
+
+      if (this.tgtColumn === y && this.tgtRow === x) {
         this.announce(`Game over. ${currPlayer.getName()} won the game`, true);
         return true;
       }
