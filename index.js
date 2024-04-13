@@ -1,10 +1,31 @@
 let game = null;
 const startGame = () => {
-  game = new Game(4);
-  const player1 = new Player("p1");
-  game.addPlayer(player1);
-  game.draw();
+  const gridSizeInput = document.createElement("input");
+  gridSizeInput.setAttribute("id", "grid-size");
+  gridSizeInput.setAttribute("type", "number");
+  const btn = document.createElement("button");
+  btn.innerText = "Create";
+
+  btn.setAttribute("id", "create");
+  document.getElementById("app").innerHTML = null;
+  document.getElementById("app").append(gridSizeInput);
+
+  document.getElementById("app").appendChild(btn);
+  btn.onclick = () => {
+    if (!gridSizeInput.value) {
+      alert("Please add some value to play the game");
+      return;
+    }
+    const addPlayerBtn = document.getElementById("add-player");
+    game = new Game(gridSizeInput.value);
+    const player1 = new Player("p1");
+
+    game.addPlayer(player1);
+    game.draw();
+    addPlayerBtn.style.display = "block";
+  };
 };
+
 const sleep = () => {
   const currPlayer = game.players[game.currentPlayerIdx];
 
@@ -48,11 +69,13 @@ const handlePlayerMovement = (ev) => {
   }
 };
 document.addEventListener("DOMContentLoaded", () => {
-  startGame();
-  document.getElementById("add-player").addEventListener("click", () => {
+  const btn = document.getElementById("add-player");
+  btn.addEventListener("click", () => {
     const player = new Player("p" + (game.players.length + 1));
     game.addPlayer(player);
   });
+  btn.style.display = "none";
+  startGame();
 });
 
 class Player {
