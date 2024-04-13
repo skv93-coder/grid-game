@@ -187,11 +187,7 @@ class Game {
         this.announce(
           `${this.players[i].getName()} and ${this.players[
             intersectingPlayerIdx
-          ].getName()} are removed from the game. ${this.players[
-            intersectingPlayerIdx
-          ]
-            .getPosition()
-            .join(",")} ${x},${y}`,
+          ].getName()} are removed from the game. `,
           true
         );
         console.log("this.players.length", this.players.length);
