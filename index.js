@@ -14,9 +14,13 @@ const startGame = () => {
 
   btn.setAttribute("id", "create");
   document.getElementById("app").innerHTML = null;
-  document.getElementById("app").append(gridSizeInput);
+  const inputContainer = document.createElement("div");
+  inputContainer.append(gridSizeInput);
+  inputContainer.append(btn);
+  inputContainer.classList.add("input-container");
 
-  document.getElementById("app").appendChild(btn);
+  document.getElementById("app").append(inputContainer);
+
   const addPlayerBtn = document.getElementById("add-player");
   addPlayerBtn.style.display = "none";
   addPlayerBtn.addEventListener("click", handleAddPlayer);
@@ -30,7 +34,7 @@ const startGame = () => {
 
     game.addPlayer(player1);
     game.draw();
-    addPlayerBtn.style.display = "block";
+    addPlayerBtn.style.display = "flex";
   };
 };
 
@@ -56,11 +60,6 @@ const sleep = () => {
 const handlePlayerMovement = (ev) => {
   const currPlayer = game.players[game.currentPlayerIdx];
   const [x, y] = currPlayer.getPosition();
-  console.log(
-    "first",
-    Math.max(x - 1, 0),
-    Math.min(y + 1, game.grid[0].length - 1)
-  );
 
   switch (ev.code) {
     case "ArrowUp":
@@ -241,8 +240,7 @@ class Game {
     this.currentPlayerIdx = (this.currentPlayerIdx + 1) % this.players.length;
 
     const gameBoard = document.createElement("div");
-    gameBoard.style.display = "grid";
-    gameBoard.style.placeContent = "center";
+    gameBoard.classList.add("game-board");
 
     const grid = this.grid;
     for (let i = 0; i < this.grid.length; i++) {
