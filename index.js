@@ -215,6 +215,7 @@ class Game {
   checkWinnerOrGameOver() {
     if (!this.players.length) {
       this.announce("Game is over no player to play the game", true);
+      this.announce("");
       return true;
     }
     for (let i = 0; i < this.players.length; i++) {
@@ -223,6 +224,7 @@ class Game {
 
       if (this.tgtColumn === y && this.tgtRow === x) {
         this.announce(`Game over. ${currPlayer.getName()} won the game`, true);
+        this.announce("");
         return true;
       }
     }
