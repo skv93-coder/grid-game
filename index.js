@@ -8,12 +8,12 @@ const startGame = () => {
 const sleep = () => {
   const currPlayer = game.players[game.currentPlayerIdx];
 
-  game.announce(`The next turn of ${currPlayer.getName()} is in 5`);
+  game.announce(`The next turn of ${currPlayer.getName()} is in 5 sec`);
 
   let count = 1;
   const id = setInterval(() => {
     game.announce(
-      `The next turn of ${currPlayer.getName()} is in  ${5 - count}`
+      `The next turn of ${currPlayer.getName()} is in  ${5 - count} sec`
     );
 
     if (count === 5) {
