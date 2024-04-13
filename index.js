@@ -1,4 +1,9 @@
 let game = null;
+const handleAddPlayer = () => {
+  const player = new Player("p" + (game.players.length + 1));
+  game.addPlayer(player);
+};
+
 const startGame = () => {
   const gridSizeInput = document.createElement("input");
   gridSizeInput.setAttribute("id", "grid-size");
@@ -11,12 +16,14 @@ const startGame = () => {
   document.getElementById("app").append(gridSizeInput);
 
   document.getElementById("app").appendChild(btn);
+  const addPlayerBtn = document.getElementById("add-player");
+  addPlayerBtn.style.display = "none";
+  addPlayerBtn.addEventListener("click", handleAddPlayer);
   btn.onclick = () => {
     if (!gridSizeInput.value) {
       alert("Please add some value to play the game");
       return;
     }
-    const addPlayerBtn = document.getElementById("add-player");
     game = new Game(gridSizeInput.value);
     const player1 = new Player("p1");
 
@@ -70,10 +77,7 @@ const handlePlayerMovement = (ev) => {
 };
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("add-player");
-  btn.addEventListener("click", () => {
-    const player = new Player("p" + (game.players.length + 1));
-    game.addPlayer(player);
-  });
+
   btn.style.display = "none";
   startGame();
 });
