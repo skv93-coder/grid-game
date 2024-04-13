@@ -235,9 +235,8 @@ class Game {
     if (showPosition) {
       const restart = confirm("Press ok to restart the game");
       if (restart) {
-        startGame();
+        return startGame();
       }
-      return;
     }
     this.currentPlayerIdx = (this.currentPlayerIdx + 1) % this.players.length;
 
