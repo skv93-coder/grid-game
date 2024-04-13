@@ -4,22 +4,7 @@
 <head>
 	<title>JavaScript Sandbox</title>
 	<meta charset="UTF-8" />
-	<script>
-		const peer = new Peer();
-		var conn = peer.connect('another-peers-id');
-		// on open will be launch when you successfully connect to PeerServer
-		conn.on('open', function () {
-			// here you have conn.id
-			conn.send('hi!');
-		});
-		peer.on('connection', function (conn) {
-			conn.on('data', function (data) {
-				// Will print 'hi!'
-				console.log(data);
-			});
-		});
-	</script>
-	<script src="./script.js"></script>
+	<script src="./index.js"></script>
 </head>
 <style>
 	.box {
