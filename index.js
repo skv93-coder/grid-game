@@ -125,6 +125,7 @@ class Player {
     this.name = name;
     this.x = null;
     this.y = null;
+    this.isVisible = true;
   }
   setPosition(arr) {
     const [x, y] = arr;
@@ -159,8 +160,14 @@ class Game {
     if (this.players.length === this.grid.length * this.grid.length - 2) {
       document.getElementById("add-player").setAttribute("disabled", true);
     }
-    player.setPosition(this.getRandomPosition());
+    const [x, y] = this.getRandomPosition();
+    player.setPosition([x, y]);
     this.players.push(player);
+    if (this.players.length > 1) {
+      const box = document.querySelector(`[data-position="${x}_${y}"]`);
+      box.classList.add("player");
+      box.innerText = player.getName();
+    }
   }
   getRandomPosition() {
     let row = Math.round(Math.random() * (this.grid.length - 1));
@@ -248,6 +255,7 @@ class Game {
         rowState.push(0);
         const box = document.createElement("div");
         box.classList.add("box");
+        box.dataset.position = i + "_" + j;
         if (grid[i][j] === "T") {
           box.classList.add("tgt");
           box.innerText = "T";
