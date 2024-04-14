@@ -197,12 +197,10 @@ class Game {
           ].getName()} are removed from the game. `,
           true
         );
-        console.log("this.players.length", this.players.length);
 
         this.players = this.players.filter(
           (_, k) => i !== k && intersectingPlayerIdx !== k
         );
-        console.log("this.players.length", this.players.length);
         break;
       }
     }
