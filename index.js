@@ -7,6 +7,8 @@ const handleAddPlayer = () => {
 const startGame = () => {
   const gridSizeInput = document.createElement("input");
   gridSizeInput.setAttribute("id", "grid-size");
+  gridSizeInput.setAttribute("min", 1);
+  gridSizeInput.setAttribute("max", 7);
   gridSizeInput.setAttribute("type", "number");
   gridSizeInput.setAttribute("placeholder", "Size of the grid");
   const btn = document.createElement("button");
