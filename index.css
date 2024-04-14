@@ -1,3 +1,7 @@
+body {
+  height: 100vh;
+  overflow: hidden;
+}
 #app {
   height: 88vh;
   width: 100%;
