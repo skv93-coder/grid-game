@@ -31,6 +31,10 @@ const startGame = () => {
       alert("Please add some value to play the game");
       return;
     }
+    if (Number(gridSizeInput.value) <= 0 || Number(gridSizeInput.value) > 7) {
+      alert("The grid size must be between in 1 and 7");
+      return;
+    }
     document.getElementById("navigation").setAttribute("data-enable", "1");
 
     game = new Game(gridSizeInput.value);
