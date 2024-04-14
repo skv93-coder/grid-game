@@ -29,6 +29,8 @@ const startGame = () => {
       alert("Please add some value to play the game");
       return;
     }
+    document.getElementById("navigation").setAttribute("data-enable", "1");
+
     game = new Game(gridSizeInput.value);
     const player1 = new Player("p1");
 
@@ -114,6 +116,7 @@ const handlePlayerMovement = (ev) => {
   }
 };
 document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("navigation").onclick = handleNavigation;
   const btn = document.getElementById("add-player");
 
   btn.style.display = "none";
@@ -277,3 +280,6 @@ class Game {
     sleep();
   }
 }
+const handleNavigation = (ev) => {
+  handlePlayerMovement({ code: ev.target.dataset.nav });
+};
