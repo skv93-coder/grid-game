@@ -59,6 +59,7 @@ const sleep = () => {
 
     if (count === 5) {
       clearInterval(id);
+      document.getElementById("navigation").onclick = handleNavigation;
 
       document.addEventListener("keydown", handlePlayerMovement);
     }
@@ -117,12 +118,11 @@ const handlePlayerMovement = (ev) => {
     ].includes(ev.code)
   ) {
     document.removeEventListener("keydown", handlePlayerMovement);
-
+    document.getElementById("navigation").onclick = () => {};
     game.draw();
   }
 };
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("navigation").onclick = handleNavigation;
   const btn = document.getElementById("add-player");
 
   btn.style.display = "none";
