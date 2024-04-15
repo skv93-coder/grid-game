@@ -24,8 +24,13 @@ const startGame = () => {
   document.getElementById("app").append(inputContainer);
 
   const addPlayerBtn = document.getElementById("add-player");
+  const restartBtn = document.getElementById("restart");
+
+  restartBtn.style.display = "none";
   addPlayerBtn.style.display = "none";
   addPlayerBtn.addEventListener("click", handleAddPlayer);
+  document.getElementById("navigation").setAttribute("data-enable", "0");
+
   btn.onclick = () => {
     if (!gridSizeInput.value) {
       alert("Please add some value to play the game");
@@ -43,6 +48,7 @@ const startGame = () => {
     game.addPlayer(player1);
     game.draw();
     addPlayerBtn.style.display = "flex";
+    restartBtn.style.display = "flex";
   };
 };
 

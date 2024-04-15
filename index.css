@@ -12,19 +12,13 @@ body {
   text-align: center;
   color: rgb(219, 219, 219);
 }
+#restart {
+  display: flex;
+  align-items: center;
+}
 #add-player {
   background-color: rgba(0, 149, 246);
   color: white;
-  height: 36px;
-  opacity: 7;
-  font-weight: 700;
-  border-radius: 4px;
-  padding: 18px 22px;
-  font-size: 18px;
-  border: 1px solid rgb(219, 219, 219);
-  line-height: 22px;
-  align-items: center;
-  cursor: pointer;
 }
 .input-container {
   height: 250px;
@@ -77,8 +71,22 @@ body {
 
 .add-player-container {
   width: 100%;
-  justify-content: end;
+  justify-content: space-evenly;
+
   display: flex;
+}
+.add-player-container > button {
+  margin-top: 3%;
+  height: 36px;
+  opacity: 7;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 18px 22px;
+  font-size: 18px;
+  border: 1px solid rgb(219, 219, 219);
+  line-height: 22px;
+  align-items: center;
+  cursor: pointer;
 }
 
 .navigation {
@@ -100,6 +108,10 @@ body {
 .navigation:first-child {
   margin-bottom: 1rem;
 }
+.plus-icon {
+  height: 15px;
+  margin-right: 4px;
+}
 @media only screen and (max-device-width: 480px) {
   .navigation[data-enable="1"] {
     display: block;
@@ -108,5 +120,12 @@ body {
   }
   .input-container {
     margin-top: 50%;
+  }
+  #restart,
+  #add-player {
+    margin-right: 0;
+  }
+  .add-player-container {
+    justify-content: space-around;
   }
 }
